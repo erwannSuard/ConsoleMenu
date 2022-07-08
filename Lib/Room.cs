@@ -15,8 +15,6 @@ public class Room
     public Room(int oX, int oY)
     {
         var rand = new Random();
-        // Height = rand.Next(15,50);
-        // Width = rand.Next(15,50);
         Height = 30;
         Width = 30;
         ObstaclesNb = (Height + Width) / 4;
@@ -25,6 +23,12 @@ public class Room
         RoomArray = new string[Width+1, Height+1];
     }
 
+/// <summary>
+/// Used to write a string to a specific console location
+/// </summary>
+/// <param name="s">String you want to draw</param>
+/// <param name="x"> X axis of console + the original location of the room </param>
+/// <param name="y"> Y axis of console + the original location of the room </param>
     protected void WriteAt(string s, int x, int y)
         {
         try
@@ -40,7 +44,9 @@ public class Room
         }
 
 
-
+/// <summary>
+/// Fills the 2d room array and draw it on console
+/// </summary>
     public void DrawRoom()
     {
 
@@ -108,7 +114,13 @@ public class Room
         // Fin obstacles
     }
 
-    // ------------ Check Move ------------ 
+
+/// <summary>
+/// Check if there's an obstacle on player's destination
+/// </summary>
+/// <param name="destinationX"> X axis aimed by player </param>
+/// <param name="destinationY"> Y axis aimed by player </param>
+/// <returns></returns>
     protected bool CheckMove(int destinationX, int destinationY)
     {
         bool checkMove;
@@ -122,8 +134,9 @@ public class Room
         }
         return checkMove;
     }
-    // ------------ Check Move ------------ 
-    // Deplacement
+/// <summary>
+/// Moving the player Up, Right, Down or Left.
+/// </summary>
     protected void Move()
     {
         ConsoleKeyInfo keyPressed;
@@ -134,6 +147,7 @@ public class Room
             if(CheckMove((PlayerPos[0]), PlayerPos[1]+1))
             {
                 PlayerPos[1] += 1;
+                ForegroundColor = ConsoleColor.Red;
                 RoomArray[PlayerPos[0], PlayerPos[1]] = "@";
                 RoomArray[PlayerPos[0], PlayerPos[1]-1] = "--";
             }
@@ -145,6 +159,7 @@ public class Room
             if(CheckMove((PlayerPos[0]), PlayerPos[1]-1))
             {
                 PlayerPos[1] -= 1;
+                ForegroundColor = ConsoleColor.Blue;
                 RoomArray[PlayerPos[0], PlayerPos[1]] = "@";
                 RoomArray[PlayerPos[0], PlayerPos[1]+1] = "--";
             }
@@ -155,6 +170,7 @@ public class Room
         {
             if(CheckMove((PlayerPos[0]+1), PlayerPos[1]))
             {
+                ForegroundColor = ConsoleColor.Gray;
                 PlayerPos[0] += 1;
                 RoomArray[PlayerPos[0], PlayerPos[1]] = "@";
                 RoomArray[PlayerPos[0]-1, PlayerPos[1]] = "--";
@@ -165,6 +181,7 @@ public class Room
         {
             if(CheckMove((PlayerPos[0]-1), PlayerPos[1]))
             {
+                ForegroundColor = ConsoleColor.DarkYellow;
                 PlayerPos[0] -= 1;
                 RoomArray[PlayerPos[0], PlayerPos[1]] = "@";
                 RoomArray[PlayerPos[0]+1, PlayerPos[1]] = "--";
@@ -185,6 +202,7 @@ public class Room
             Move();
         }
     }
+
 
 
     protected void WriteAround()
