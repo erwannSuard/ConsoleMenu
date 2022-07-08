@@ -75,13 +75,33 @@ public class Menu
                 enter = true;
             }
         }
-        Write(Choose(MenuLabels[CursorPos]));
+       Choose(MenuLabels[CursorPos]);
     }
 
-    public string Choose(string label)
+    public void Choose(string label)
     {
-        Clear();
-        return $"Vous avez choisi {label}";
+        if(label == "NOUVELLE PARTIE")
+        {
+            Clear();
+            // int x = 25;
+            // int y = 14;
+            int oX = 9;
+            int oY = 5;
+            //var room = new Room(x, y, oX, oY);
+            var room = new Room(oX, oY);
+            room.DrawRoom();
+            WriteLine();
+            
+        }
+        // else
+        // {
+        //     CursorVisible = false;
+        //     string[] labels = {"NOUVELLE PARTIE", "CHARGER", "OPTIONS", "QUITTER CETTE FAKE APPLI DE MORT"};
+        //     var menu = new Menu(labels);
+        //     menu.DisplayMenu();
+        //     menu.MoveCursor();
+        //     ReadLine();
+        // }
     }
 }
 
