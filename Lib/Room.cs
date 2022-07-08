@@ -147,7 +147,6 @@ public class Room
             if(CheckMove((PlayerPos[0]), PlayerPos[1]+1))
             {
                 PlayerPos[1] += 1;
-                ForegroundColor = ConsoleColor.Red;
                 RoomArray[PlayerPos[0], PlayerPos[1]] = "@";
                 RoomArray[PlayerPos[0], PlayerPos[1]-1] = "--";
             }
@@ -159,7 +158,6 @@ public class Room
             if(CheckMove((PlayerPos[0]), PlayerPos[1]-1))
             {
                 PlayerPos[1] -= 1;
-                ForegroundColor = ConsoleColor.Blue;
                 RoomArray[PlayerPos[0], PlayerPos[1]] = "@";
                 RoomArray[PlayerPos[0], PlayerPos[1]+1] = "--";
             }
@@ -170,7 +168,6 @@ public class Room
         {
             if(CheckMove((PlayerPos[0]+1), PlayerPos[1]))
             {
-                ForegroundColor = ConsoleColor.Gray;
                 PlayerPos[0] += 1;
                 RoomArray[PlayerPos[0], PlayerPos[1]] = "@";
                 RoomArray[PlayerPos[0]-1, PlayerPos[1]] = "--";
@@ -181,7 +178,6 @@ public class Room
         {
             if(CheckMove((PlayerPos[0]-1), PlayerPos[1]))
             {
-                ForegroundColor = ConsoleColor.DarkYellow;
                 PlayerPos[0] -= 1;
                 RoomArray[PlayerPos[0], PlayerPos[1]] = "@";
                 RoomArray[PlayerPos[0]+1, PlayerPos[1]] = "--";
